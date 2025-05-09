@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    
+    @apply mx-5 hover:text-red-500 transition duration-100;
+  }
+
+.btn{
+    @apply bg-[#EB5B00] px-5 py-2 text-white font-semibold rounded-md hover:scale-[0.98] duration-100;
+}
+
+
+  
