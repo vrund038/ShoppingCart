@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../features/shopCart/productSlice'
 import { addToCart } from '../features/shopCart/cartSlice'
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
 
 function ProductList() {
     // const [product,setProduct] = useState([])   //because we rename item to product
@@ -33,9 +34,17 @@ function ProductList() {
     if(status==='failed') return <p>Something went wrong..!!</p>
 
   return (
-    <>
-        <Navbar/>
-        <div className='grid grid-cols-4 gap-5   max-w-[1400px] mx-auto mt-5'>
+    <>  
+        <SignedOut>
+            <Navbar/>
+            <div className='flex justify-center mt-10'>
+                <h1 className='text-xl font-bold'>Please Login</h1>
+            </div>
+        </SignedOut>
+
+        <SignedIn>
+            <Navbar/>
+            <div className='grid grid-cols-4 gap-5   max-w-[1400px] mx-auto mt-5'>
             { product.map((data,id)=>{
                 return (
                     <div key={id} className='bg-white p-3 rounded-md shadow-md text-center  transition-transform transform hover:scale-[1.05] border relative'>
@@ -54,6 +63,7 @@ function ProductList() {
             })
             }
         </div>
+        </SignedIn>
     </>
   )
 }
